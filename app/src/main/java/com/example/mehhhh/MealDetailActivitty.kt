@@ -1,9 +1,16 @@
 package com.example.mehhhh
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.widget.EditText
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mehhhh.myMeal.MyMealActivity
+import com.example.mehhhh.remote.MyMeals
 import com.example.mehhhh.remote.RemoteDataSource
 import com.example.mehhhh.remote.TMDBResponse
 import com.example.mehhhh.remote.TMDBResult
@@ -38,11 +45,44 @@ class MealDetailActivitty : AppCompatActivity() {
             tv_meal_tags.text =  tv_meal_tags.text.toString() + meal.meals[0].strTags
             tv_meal_youtube.text = tv_meal_youtube.text.toString() + meal.meals[0].strYoutube
             tv_meal_ingredients.text = tv_meal_ingredients.text.toString() + "1. " + meal.meals[0].strIngredient1 + "2. " + meal.meals[0].strIngredient2 + "3. " + meal.meals[0].strIngredient3 + "4. " + meal.meals[0].strIngredient4 + "5. " + meal.meals[0].strIngredient5 + "6. " + meal.meals[0].strIngredient6 + ""
+//
+//
+//        private val newWordActivityRequestCode = 1
+//
+//        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//            super.onActivityResult(requestCode, resultCode, data)
+//            if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+//
+//                val word = MyMeals()
+//                word.title = tv_meal_name.text.toString()
+//                MyMealActivity.mealViewModel.insert(word)
+//
+//            } else {
+//                Toast.makeText(
+//                    applicationContext,
+//                    "Cannot be saved",
+//                    Toast.LENGTH_LONG
+//                ).show()
+//
+//            }
+//        }
+        }
+
+        bt_favorites.setOnClickListener {
+                    val replyIntent = Intent()
+                        val meal = tv_meal_name.text.toString()
+                        replyIntent.putExtra(EXTRA_REPLY, meal)
+                        setResult(Activity.RESULT_OK, replyIntent)
+                    }
+            var intent = Intent(this, MyMealActivity::class.java)
+            startActivity(intent)
+            }
+
+            companion object {
+            const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
         }
 
 
-
-    }
 
 }
 //

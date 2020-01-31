@@ -68,10 +68,11 @@ class MainActivity : AppCompatActivity() {
         homeViewModel.shouldShowListDetails.observe(this, Observer {
             Log.w("nie wiem ", "czemu ")
             val homeFragment = HomeFragment()
-            val fragmentTransaction: FragmentTransaction =supportFragmentManager.beginTransaction()
+            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment)
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
+            Log.w("mejn", "activity")
         })
     }
 

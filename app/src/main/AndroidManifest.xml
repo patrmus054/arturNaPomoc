@@ -12,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".myMeal.MyMealActivity"></activity>
         <activity
             android:name=".MealDetailActivitty"
             android:label="@string/title_activity_meal_detail_activitty"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.home.MainActivity"
             android:label="@string/app_name"

@@ -43,7 +43,7 @@ class HomeViewModel: ViewModel() {
         get() = _shouldShowDetails
 
     private val _shouldShowListDetails = MutableLiveData<Boolean?>()
-    val shouldShowListDetails: LiveData<Boolean?>
+    val eshouldShowListDetails: LiveData<Boolean?>
         get() = _shouldShowDetails
 
     fun showDetail(){

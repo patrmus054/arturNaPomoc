@@ -1,5 +1,8 @@
 package com.example.mehhhh.remote
 
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 class MealResponse {
@@ -191,4 +194,13 @@ class TMDBMealByIngredinet{
     var img: String? = null
     @SerializedName("idMeal")
     var id: String? = null
+}
+
+@Entity(tableName = "my_meals")
+class MyMeals{
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = null
+
+    @NonNull
+    var title: String? = null
 }
