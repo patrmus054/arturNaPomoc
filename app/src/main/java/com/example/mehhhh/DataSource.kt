@@ -1,8 +1,6 @@
 package com.example.mehhhh
 
-import com.example.mehhhh.remote.Result
-import com.example.mehhhh.remote.TMDBCategoriesRespond
-import com.example.mehhhh.remote.TMDBResponse
+import com.example.mehhhh.remote.*
 
 interface DataSource {
 
@@ -11,23 +9,25 @@ interface DataSource {
     suspend fun getMealsByIngredient(ingredient: String): List<Result>
     suspend fun getMealsByIngredientAndName(name: String, ingredient: String): List<Result>
     suspend fun refreshNews()
-    suspend fun getTMDBMealByName(name: String): List<TMDBResponse>
+    suspend fun getTMDBMealByName(name: String): TMDBResponse
 
-    suspend fun getFullTMDBMealDetailsById(id: String): List<TMDBResponse>
+    suspend fun getFullTMDBMealDetailsById(id: String): TMDBResponse
 
     suspend fun getSingleTMDBMeal(): List<TMDBResponse>
 
     suspend fun getAllTMDBMealCategories(): List<TMDBCategoriesRespond>
 
-    suspend fun getListOfCategories(category: String): List<TMDBResponse>
+    suspend fun getListOfCategories(category: String): TMDBResponse
 
-    suspend fun getListOfArea(area: String): List<TMDBResponse>
+    suspend fun getListOfArea(area: String): TMDBResponse
 
-    suspend fun getListOfIngedients(area: String): List<TMDBResponse>
+    suspend fun getListOfIngedients(list: String): List<TMDBIngredients>
 
-    suspend fun getTMDBMealsByCategory(category: String): List<TMDBResponse>
+    suspend fun getTMDBMealsByCategory(category: String): TMDBResponse
 
-    suspend fun getTMDBMealsByArea(area: String): List<TMDBResponse>
+    suspend fun getTMDBMealsByArea(area: String): TMDBResponse
+
+    suspend fun getTMDBMealsByIngredient(ingredient: String): TMDBMealByIngredientRespond
 
 
 }

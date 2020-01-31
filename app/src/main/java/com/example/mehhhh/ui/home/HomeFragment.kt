@@ -1,7 +1,7 @@
 package com.example.mehhhh.ui.home
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,24 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mehhhh.MealDetailActivitty
 import com.example.mehhhh.R
 import com.example.mehhhh.remote.Result
 import com.example.mehhhh.remote.TMDBResult
-import com.example.mehhhh.ui.search.ListAdapter
-import com.example.mehhhh.ui.search.ListAdapterV2
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_search.*
 
 
 class HomeFragment : Fragment() {
 
     companion object{
         fun newInstance(): HomeFragment = HomeFragment()
+        lateinit var homeViewModel: HomeViewModel
     }
 
-    lateinit var listAdapter: com.example.mehhhh.ui.search.ListAdapter
+    lateinit var listAdapter: ListAdapter
     var mMealList: List<Result>? = null
-    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,15 +40,23 @@ class HomeFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
         mMealList = mutableListOf()
-        listAdapter = ListAdapter(mMealList as MutableList<TMDBResult>)
+        listAdapter =
+            ListAdapter(mMealList as MutableList<TMDBResult>)
         home_recycler_view.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = listAdapter
         }
-        homeViewModel.item.observe(this, Observer {
+        homeViewModel.item.observe(viewLifecycleOwner, Observer {
             listAdapter.setList(it)
         })
-        homeViewModel.getAllMeals()
+
+
+        homeViewModel.shouldShowDetails.observe(viewLifecycleOwner, Observer {
+            var intent = Intent(activity, MealDetailActivitty::class.java)
+            startActivity(intent)
+        })
+
+
     }
 
 }

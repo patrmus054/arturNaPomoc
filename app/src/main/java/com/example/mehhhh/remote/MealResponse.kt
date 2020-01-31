@@ -164,3 +164,31 @@ class TMDBCategory{
     var strCategoryDescription: SerializedName? = null
 }
 
+class TMDBIngredientsRespond{
+    @SerializedName("meals")
+    var ingredeints = ArrayList<TMDBIngredients>()
+}
+
+class TMDBIngredients{
+    @SerializedName("idIngredient")
+    var id: String? = null
+    @SerializedName("strIngredient")
+    var name: String? = null
+    @SerializedName("strDescription")
+    var description: String? = null
+    @SerializedName("strType")
+    var type: String? = null
+}
+class TMDBMealByIngredientRespond{
+    @SerializedName("meals")
+    var meals = ArrayList<TMDBMealByIngredinet>()
+}
+
+class TMDBMealByIngredinet{
+    @SerializedName("strMeal")
+    var name: String? = null
+    @SerializedName("strMealThumb")
+    var img: String? = null
+    @SerializedName("idMeal")
+    var id: String? = null
+}

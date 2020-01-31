@@ -1,12 +1,10 @@
 package com.example.mehhhh.local
 
 import com.example.mehhhh.DataSource
-import com.example.mehhhh.remote.Result
-import com.example.mehhhh.remote.TMDBCategoriesRespond
-import com.example.mehhhh.remote.TMDBResponse
+import com.example.mehhhh.remote.*
 
 class LocalDataSource: DataSource {
-    override suspend  fun getAllMeals(): List<Result> {
+    override suspend fun getAllMeals(): List<Result> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -18,7 +16,10 @@ class LocalDataSource: DataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getMealsByIngredientAndName(name: String, ingredient: String): List<Result> {
+    override suspend fun getMealsByIngredientAndName(
+        name: String,
+        ingredient: String
+    ): List<Result> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -26,11 +27,11 @@ class LocalDataSource: DataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getTMDBMealByName(name: String): List<TMDBResponse> {
+    override suspend fun getTMDBMealByName(name: String): TMDBResponse {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getFullTMDBMealDetailsById(id: String): List<TMDBResponse> {
+    override suspend fun getFullTMDBMealDetailsById(id: String): TMDBResponse {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -42,23 +43,28 @@ class LocalDataSource: DataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getListOfCategories(category: String): List<TMDBResponse> {
+    override suspend fun getListOfCategories(category: String): TMDBResponse {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getListOfArea(area: String): List<TMDBResponse> {
+    override suspend fun getListOfArea(area: String): TMDBResponse {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getListOfIngedients(area: String): List<TMDBResponse> {
+    override suspend fun getListOfIngedients(list: String): List<TMDBIngredients> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getTMDBMealsByCategory(category: String): List<TMDBResponse> {
+    override suspend fun getTMDBMealsByCategory(category: String): TMDBResponse {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override suspend fun getTMDBMealsByArea(area: String): List<TMDBResponse> {
+    override suspend fun getTMDBMealsByArea(area: String): TMDBResponse {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override suspend fun getTMDBMealsByIngredient(ingredient: String): TMDBMealByIngredientRespond {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

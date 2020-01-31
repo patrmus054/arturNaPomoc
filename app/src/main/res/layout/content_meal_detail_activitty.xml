@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_meal_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id: "
+                android:textSize="14sp"
+                android:padding="10sp"/>
+            <TextView
+                android:id="@+id/tv_meal_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: "
+                android:textSize="14sp"
+                android:padding="10sp"/>
+            <TextView
+                android:id="@+id/tv_meal_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: "
+                android:textSize="14sp"
+                android:padding="10sp"/>
+            <TextView
+                android:id="@+id/tv_meal_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Area: "
+                android:textSize="14sp"
+                android:padding="10sp"
+                />
+            <TextView
+                android:id="@+id/tv_meal_instruction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How to do it: "
+                android:textSize="14sp"
+                android:padding="10sp"/>
+            <TextView
+                android:id="@+id/tv_meal_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tags: "
+                android:textSize="14sp"
+                android:padding="10sp"/>
+            <TextView
+                android:id="@+id/tv_meal_youtube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Youtube: "
+                android:textSize="14sp"
+                android:padding="10sp"
+                />
+            <TextView
+                android:id="@+id/tv_meal_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredients: "
+                android:textSize="14sp"
+                android:padding="10sp"/>
+
+            <Button
+                android:id="@+id/bt_favorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="add to favorites"
+                android:textSize="16dp"
+                android:padding="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

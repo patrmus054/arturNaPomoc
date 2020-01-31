@@ -24,8 +24,7 @@ class RemoteDataSource: DataSource {
     override suspend fun getMealsByIngredientAndName(name: String, ingredient: String): List<Result> = getData(ingredient,name,page)
 
     override suspend fun refreshNews(){ getAllMeals() }
-    override suspend fun getTMDBMealByName(name: String): List<TMDBResponse> {
-        var mealsData = ArrayList<TMDBResponse>()
+    override suspend fun getTMDBMealByName(name: String): TMDBResponse {
 
         val retrofit = Retrofit.Builder()
             .baseUrl(TMDBBaseUrl)
@@ -34,23 +33,17 @@ class RemoteDataSource: DataSource {
         val service = retrofit.create(MealService::class.java)
         val call = service.getTMDBMealByName(name)
 
-        var result = call.await()
-        mealsData.add(result[0])
-        return mealsData
+        return call.await()
     }
 
-    override suspend fun getFullTMDBMealDetailsById(id: String): List<TMDBResponse> {
-        var mealsData = ArrayList<TMDBResponse>()
-
+    override suspend fun getFullTMDBMealDetailsById(id: String): TMDBResponse {
         val retrofit = Retrofit.Builder()
             .baseUrl(TMDBBaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(MealService::class.java)
         val call = service.getFullTMDBMealDetailsById(id)
-        var result = call.await()
-        mealsData.add(result[0])
-        return mealsData
+        return call.await()
     }
 
     override suspend fun getSingleTMDBMeal(): List<TMDBResponse> {
@@ -72,7 +65,6 @@ class RemoteDataSource: DataSource {
                 mealsData.add(result)
 
 
-        Log.w("RemoteDataSource", mealsData[0].meals[0].strMeal)
         return mealsData
     }
 
@@ -86,7 +78,7 @@ class RemoteDataSource: DataSource {
         return call.await()
     }
 
-    override suspend fun getListOfCategories(category: String): List<TMDBResponse> {
+    override suspend fun getListOfCategories(category: String): TMDBResponse {
         val retrofit = Retrofit.Builder()
         .baseUrl(TMDBBaseUrl)
         .addConverterFactory(GsonConverterFactory.create())
@@ -96,7 +88,7 @@ class RemoteDataSource: DataSource {
         return call.await()
     }
 
-    override suspend fun getListOfArea(area: String): List<TMDBResponse> {
+    override suspend fun getListOfArea(area: String): TMDBResponse {
         val retrofit = Retrofit.Builder()
         .baseUrl(TMDBBaseUrl)
         .addConverterFactory(GsonConverterFactory.create())
@@ -106,17 +98,18 @@ class RemoteDataSource: DataSource {
         return call.await()
     }
 
-    override suspend fun getListOfIngedients(area: String): List<TMDBResponse> {
+    override suspend fun getListOfIngedients(list: String): List<TMDBIngredients> {
         val retrofit = Retrofit.Builder()
             .baseUrl(TMDBBaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(MealService::class.java)
-        val call = service.getListOfCategories(area)
-        return call.await()
+        val call = service.getListOfIngedients(list)
+        var result =  call.await()
+        return result.ingredeints
     }
 
-    override suspend fun getTMDBMealsByCategory(category: String): List<TMDBResponse> {
+    override suspend fun getTMDBMealsByCategory(category: String): TMDBResponse {
         val retrofit = Retrofit.Builder()
             .baseUrl(TMDBBaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
@@ -126,13 +119,23 @@ class RemoteDataSource: DataSource {
         return call.await()
     }
 
-    override suspend fun getTMDBMealsByArea(area: String): List<TMDBResponse> {
+    override suspend fun getTMDBMealsByArea(area: String): TMDBResponse {
         val retrofit = Retrofit.Builder()
             .baseUrl(TMDBBaseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofit.create(MealService::class.java)
         val call = service.getTMDBMealsByArea(area)
+        return call.await()
+    }
+
+    override suspend fun getTMDBMealsByIngredient(ingredient: String): TMDBMealByIngredientRespond {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(TMDBBaseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val service = retrofit.create(MealService::class.java)
+        val call = service.getTMDBMealsByIngredient(ingredient)
         return call.await()
     }
 

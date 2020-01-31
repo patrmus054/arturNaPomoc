@@ -1,22 +1,25 @@
-package com.example.mehhhh.ui.search
+package com.example.mehhhh.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mehhhh.R
-import com.example.mehhhh.databinding.HomeItem2Binding
+import com.example.mehhhh.databinding.HomeItemBinding
 import com.example.mehhhh.remote.TMDBResult
+import com.example.mehhhh.ui.home.HomeFragment.Companion.homeViewModel
 
 
-class ListAdapterV2(private val list: MutableList<TMDBResult>)
+class ListAdapter(private val list: MutableList<TMDBResult>)
     : RecyclerView.Adapter<BaseViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        val binding = DataBindingUtil.inflate<HomeItem2Binding>(
+        val binding = DataBindingUtil.inflate<HomeItemBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.home_item_2, parent, false
+            R.layout.home_item, parent, false
         )
         return BaseViewHolder(binding)
     }
@@ -25,8 +28,8 @@ class ListAdapterV2(private val list: MutableList<TMDBResult>)
         val meal: TMDBResult = list[position]
         holder.bind(meal, object : MealListener{
             override fun onMealSelected(meal: TMDBResult) {
-                SearchFragment.searchViewModel.setMeal(meal)
-                SearchFragment.searchViewModel.showDetail()
+                homeViewModel.setMeal(meal)
+                homeViewModel.showDetail()
             }
         })
     }
@@ -41,12 +44,14 @@ class ListAdapterV2(private val list: MutableList<TMDBResult>)
 
 }
 
-class BaseViewHolder(private val binding: HomeItem2Binding) :
+class BaseViewHolder(private val binding: HomeItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
     private var mTitleView: TextView? = null
+    private var img: ImageView? = null
 
     init {
         mTitleView = itemView.findViewById(R.id.tv_search_title)
+        img = itemView.findViewById(R.id.img_search)
     }
 
     fun bind(mMeal: TMDBResult, mealListener: MealListener) {
@@ -54,6 +59,11 @@ class BaseViewHolder(private val binding: HomeItem2Binding) :
             meal = mMeal
             listener = mealListener
             mTitleView?.text = mMeal.strMeal
+
+            Glide.with(binding.root)
+                .load(mMeal.strMealThumb)
+                .into(img!!)
+
             executePendingBindings()
         }
 

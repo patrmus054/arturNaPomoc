@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="ingredient"
+            type="com.example.mehhhh.remote.TMDBIngredients" />
+        <variable
+            name="listener"
+            type="com.example.mehhhh.ui.ingredients.IngredientListener" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:padding="@dimen/padding_normal"
+    android:onClick="@{() -> listener.onIngredientSelected(ingredient)}">
+
+
+    <TextView
+        android:id="@+id/tv_ingredient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#fff"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
