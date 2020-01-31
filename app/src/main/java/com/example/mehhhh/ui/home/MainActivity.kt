@@ -2,6 +2,7 @@ package com.example.mehhhh.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -48,14 +49,7 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        homeViewModel.getAllMeals()
-        homeViewModel.shouldShowListDetails.observe(this, Observer {
-            val homeFragment = HomeFragment()
-            val fragmentTransaction: FragmentTransaction =supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -68,6 +62,18 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    override fun onStart() {
+        super.onStart()
+        homeViewModel.getAllMeals()
+        homeViewModel.shouldShowListDetails.observe(this, Observer {
+            Log.w("nie wiem ", "czemu ")
+            val homeFragment = HomeFragment()
+            val fragmentTransaction: FragmentTransaction =supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        })
+    }
 
 
 }
