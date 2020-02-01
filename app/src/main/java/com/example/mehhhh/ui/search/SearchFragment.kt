@@ -28,7 +28,6 @@ class SearchFragment : Fragment() {
 
     }
 
-
     var text: String = ""
     lateinit var listAdapter: ListAdapterV2
 
@@ -59,12 +58,14 @@ class SearchFragment : Fragment() {
         }
         searchViewModel.item.observe(viewLifecycleOwner, Observer {
             Log.e("myapp","Working...")
+
             listAdapter.setList(it)
         })
         Log.w("thisssss", text)
         searchViewModel.getMealsByName(text)
         searchViewModel.shouldShowDetails.observe(viewLifecycleOwner, Observer {
             var intent = Intent(activity, MealDetailActivitty::class.java)
+            intent.putExtra("FRAGMENT", "SearchFragment")
             startActivity(intent)
         })
 

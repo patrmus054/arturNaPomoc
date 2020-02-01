@@ -1,5 +1,6 @@
 package com.example.mehhhh.ui.ingredients
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -32,6 +33,7 @@ class ListAdapterV3(private val list: MutableList<TMDBMealByIngredinet>)
         val meal: TMDBMealByIngredinet = list[position]
         holder.bind(meal, object : MealListener{
             override fun onIngredientSelected(ingredinet: TMDBMealByIngredinet) {
+                Log.w("V3Adapter", "witam")
                 homeViewModel.getMealsByIngredientId(ingredient = ingredinet.name.toString())
                 homeViewModel.showList()
             }

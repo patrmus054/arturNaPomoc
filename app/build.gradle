@@ -30,6 +30,7 @@ android {
     dataBinding {
         enabled = true
     }
+
 }
 
 dependencies {
@@ -73,6 +74,6 @@ dependencies {
 
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
-
+    kapt "androidx.room:room-compiler:$room_version"
 
 }

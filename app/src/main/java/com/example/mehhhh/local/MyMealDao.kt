@@ -10,7 +10,8 @@ import com.example.mehhhh.remote.MyMeals
 
 @Dao
 interface MyMealDao {
-    @Query("SELECT * from my_meals ORDER BY title ASC")
+
+    @Query("SELECT * from my_meals ORDER BY title")
     fun getMyMeals(): LiveData<List<MyMeals>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

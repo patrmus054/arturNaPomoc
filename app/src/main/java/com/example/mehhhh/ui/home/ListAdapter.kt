@@ -51,7 +51,7 @@ class BaseViewHolder(private val binding: HomeItemBinding) :
 
     init {
         mTitleView = itemView.findViewById(R.id.tv_search_title)
-        img = itemView.findViewById(R.id.img_search)
+        img = itemView.findViewById(R.id.img_home)
     }
 
     fun bind(mMeal: TMDBResult, mealListener: MealListener) {

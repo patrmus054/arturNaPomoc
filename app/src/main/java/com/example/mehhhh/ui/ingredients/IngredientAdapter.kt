@@ -29,8 +29,9 @@ class IngredientAdapter(private  val list: MutableList<TMDBIngredients>)
         val ingredient: TMDBIngredients = list[position]
         holder.bind(ingredient, object : IngredientListener{
             override fun onIngredientSelected(ingredient: TMDBIngredients) {
-                Log.w("Jestem", ingredient.name)
+                Log.w("Jestem", ingredient.name.toString())
                 ingredientViewModel.setIngredient(ingredient)
+                homeViewModel.item
                 ingredientViewModel.showList()
             }
         })
@@ -52,9 +53,11 @@ class IngredientAdapter(private  val list: MutableList<TMDBIngredients>)
             mTitle = itemView.findViewById(R.id.tv_ingredient)
         }
 
-        fun bind(ingredient: TMDBIngredients, ingredientListener: IngredientListener) {
+        fun bind(iIngredient: TMDBIngredients, ingredientListener: IngredientListener) {
             with(binding){
-                mTitle?.text = ingredient.name
+                ingredient = iIngredient
+                listener = ingredientListener
+                mTitle?.text = iIngredient.name
             }
 
         }

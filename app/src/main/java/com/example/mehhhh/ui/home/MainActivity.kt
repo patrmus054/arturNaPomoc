@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -64,16 +65,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        homeViewModel.getAllMeals()
-        homeViewModel.shouldShowListDetails.observe(this, Observer {
-            Log.w("nie wiem ", "czemu ")
-            val homeFragment = HomeFragment()
-            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-            Log.w("mejn", "activity")
-        })
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.action_settings){
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 

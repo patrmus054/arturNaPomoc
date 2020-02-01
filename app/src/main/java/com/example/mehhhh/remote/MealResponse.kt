@@ -202,5 +202,5 @@ class MyMeals{
     var id: Int? = null
 
     @NonNull
-    var title: String? = null
+    var title: String = ""
 }

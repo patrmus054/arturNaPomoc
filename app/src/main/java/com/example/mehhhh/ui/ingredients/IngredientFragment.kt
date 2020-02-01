@@ -51,9 +51,10 @@ class IngredientFragment : Fragment() {
         ingredientViewModel.shouldShowList.observe(viewLifecycleOwner, Observer {
             val nextFrag = HomeFragment()
             activity!!.supportFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment_container, nextFrag, "findThisFragment")
+                .replace(R.id.nav_host_fragment, nextFrag, "findThisFragment")
                 .addToBackStack(null)
                 .commit()
+
         })
     }
 

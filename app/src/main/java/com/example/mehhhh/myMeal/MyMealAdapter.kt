@@ -12,12 +12,12 @@ import com.example.mehhhh.remote.MyMeals
 class MyMealAdapter internal constructor(
     context: Context
 ):RecyclerView.Adapter<MyMealAdapter.MyMealsHolder>(){
+
         private val inflater: LayoutInflater = LayoutInflater.from(context)
-        private var meals = emptyList<MyMeals>() // Cached copy of words
+        private var meals = emptyList<MyMeals>()
 
         inner class MyMealsHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val mealItemView: TextView = itemView.findViewById(R.id.textView)
-                //
+            val mealItemView: TextView = itemView.findViewById(R.id.tv_my_meal)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyMealsHolder {
@@ -30,8 +30,8 @@ class MyMealAdapter internal constructor(
             holder.mealItemView.text = current.title
         }
 
-        internal fun setWords(words: List<MyMeals>) {
-            this.meals = words
+        internal fun setMeals(meal: List<MyMeals>) {
+            this.meals = meal
             notifyDataSetChanged()
         }
 

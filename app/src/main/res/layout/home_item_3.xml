@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:descendantFocusability="beforeDescendants">
 
     <data>
         <import type="android.view.View"/>
@@ -15,9 +16,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
         android:padding="@dimen/padding_normal"
-        android:onClick="@{() -> listener.onIngredientSelected(ingredient)}">
+        android:onClick="@{() -> listener.onIngredientSelected(ingredient)}"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="@drawable/card_backgroud_selector">
 
         <ImageView
             android:id="@+id/img_list_search"
@@ -35,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="110dp"
             android:layout_marginLeft="15dp"
-            android:textColor="#fff"
+            android:textColor="#000"
             app:layout_constraintBottom_toBottomOf="@+id/img_search"
             app:layout_constraintStart_toEndOf="@+id/img_search"
             app:layout_constraintTop_toTopOf="parent"

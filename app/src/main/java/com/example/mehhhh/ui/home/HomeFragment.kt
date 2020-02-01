@@ -2,10 +2,12 @@ package com.example.mehhhh.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +56,16 @@ class HomeFragment : Fragment() {
         homeViewModel.shouldShowDetails.observe(viewLifecycleOwner, Observer {
             var intent = Intent(activity, MealDetailActivitty::class.java)
             startActivity(intent)
+        })
+        homeViewModel.getAllMeals()
+        homeViewModel.shouldShowDetails.observe(viewLifecycleOwner, Observer {
+            Log.w("nie wiem ", "czemu ")
+            val homeFragment = HomeFragment()
+            val fragmentTransaction: FragmentTransaction = activity!!.supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.nav_host_fragment, homeFragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+            Log.w("mejn", "activity")
         })
 
 

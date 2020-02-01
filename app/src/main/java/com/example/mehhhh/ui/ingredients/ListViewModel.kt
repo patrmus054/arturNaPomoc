@@ -43,7 +43,7 @@ class ListViewModel: ViewModel() {
 
     fun getMealsByIngredient(){
         coroutineScope.launch {
-            _item.value = getData().getTMDBMealsByIngredient(IngredientViewModel.mIngredient.id.toString()).meals
+            _item.value = getData().getTMDBMealsByIngredient(IngredientViewModel.mIngredient.id.toString()).meals as List<TMDBMealByIngredinet>?
         }
     }
 
