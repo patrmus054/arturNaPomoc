@@ -2,27 +2,20 @@ package com.example.mehhhh.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.bumptech.glide.Glide
-import com.bumptech.glide.annotation.GlideModule
-import com.example.mehhhh.ActivityUtils
 import com.example.mehhhh.R
-import com.example.mehhhh.ui.home.HomeFragment.Companion.homeViewModel
-import com.example.mehhhh.ui.search.SearchFragment
+import com.example.mehhhh.myMeal.MyMealActivity
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.fragment_to_search.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -69,8 +62,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.action_settings){
+        if(item.itemId == R.id.action_quit){
             finish()
+        }else if(item.itemId == R.id.action_saved){
+            var intent = Intent(this, MyMealActivity::class.java)
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }

@@ -21,6 +21,11 @@
             android:icon="@drawable/ic_format_list_bulleted_white_24dp"
             android:title="@string/recipes"
             android:visible="false"/>
+        <item
+            android:id="@+id/nav_saved"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="Saved"
+            android:visible="false"/>
     </group>
 
 </menu>

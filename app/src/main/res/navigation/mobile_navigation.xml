@@ -28,4 +28,5 @@
         android:name="com.example.mehhhh.ui.ingredients.IngredientFragment"
         android:label="@string/menu_ingredients"
         tools:layout="@layout/fragment_ingredients" />
+
 </navigation>

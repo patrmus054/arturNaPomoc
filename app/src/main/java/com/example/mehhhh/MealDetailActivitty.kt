@@ -67,13 +67,12 @@ class MealDetailActivitty : AppCompatActivity() {
         bt_favorites.setOnClickListener {
 
             var intent = Intent(this, MyMealActivity::class.java)
-            val meal = tv_meal_name.text.toString()
-            Log.i("MealDetailActivity", meal)
-            intent.putExtra(EXTRA_REPLY, meal)
+            val mMeal = tv_meal_name.text.toString()
+            intent.putExtra(EXTRA_REPLY, mMeal)
+            intent.putExtra("MEAL_ID", meal.meals[0].idMeal)
             setResult(Activity.RESULT_OK, intent)
             val newMealActivityRequestCode = 0
             startActivityForResult(intent, newMealActivityRequestCode)
-            Log.i("MealDetailActivity", "2")
 
         }
 

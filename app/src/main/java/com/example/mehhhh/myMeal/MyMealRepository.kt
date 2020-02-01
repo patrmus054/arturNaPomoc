@@ -1,4 +1,4 @@
-package com.example.mehhhh
+package com.example.mehhhh.myMeal
 
 import androidx.lifecycle.LiveData
 import com.example.mehhhh.local.MyMealDao
@@ -9,5 +9,9 @@ class MyMealRepository(private val myMealDao: MyMealDao) {
 
     suspend fun insert(myMeals: MyMeals){
         myMealDao.insert(myMeals)
+    }
+
+    suspend fun deleteAtId(id: Int){
+        myMealDao.deleteByMealId(id)
     }
 }

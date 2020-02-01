@@ -31,6 +31,7 @@ public abstract class MyMealDatabase: RoomDatabase() {
                     context.applicationContext,
                     MyMealDatabase::class.java,"my_meals")
                     .addCallback(MealDatabaseCallback(scope))
+                    .allowMainThreadQueries()
                     .build()
                 Log.w("bub","2")
                 INSTANCE = instance
@@ -60,5 +61,6 @@ public abstract class MyMealDatabase: RoomDatabase() {
                 }
             }
         }
+
     }
 }

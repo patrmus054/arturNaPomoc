@@ -1,6 +1,8 @@
 package com.example.mehhhh.myMeal
 
+import android.app.Application
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,4 +38,11 @@ class MyMealAdapter internal constructor(
         }
 
         override fun getItemCount() = meals.size
+
+    fun removeAt(position: Int) {
+        Log.w("Mye", "1")
+        MyMealViewModel(Application()).deleteById(position)
+        (meals as ArrayList).removeAt(position)
+        notifyItemRemoved(position)
     }
+}
